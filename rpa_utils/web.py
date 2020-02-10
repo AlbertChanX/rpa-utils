@@ -7,13 +7,14 @@ log = logging.getLogger(__name__)
 
 def custom_request(url, method, data=dict(), headers=None, timeout=5, return_type='json'):
     log.info('request detail: \n{}'.format(dict(url=url, method=method, headers=headers)))
+    context = dict(headers=headers, timeout=timeout)
     try:
         if method == 'POST':
-            req = requests.post(url, json=data, headers=headers, timeout=timeout)
+            req = requests.post(url, json=data, **context)
         elif method == 'GET':
-            req = requests.get(url, params=data, headers=headers, timeout=timeout)
+            req = requests.get(url, params=data, **context)
         elif method == 'PUT':
-            req = requests.put(url, json=data, headers=headers, timeout=timeout)
+            req = requests.put(url, json=data, **context)
         else:
             raise ValueError(method)
         if return_type == 'json':
