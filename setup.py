@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='rpa-utils',
-    version='1.0.0',
+    version='1.0.1',
     py_modules=['rpa_utils'],
     install_requires=requires,
     python_requires='>=3.6',
